@@ -1,0 +1,50 @@
+@import url("https://fonts.googleapis.com/css2?family=Titan+One&display=swap");
+.login{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    background: linear-gradient(135deg, #000000, #2234ae);
+    height: 100vh;
+        
+}
+.wrapper {
+  width: 100vw;
+  text-align: center;
+  margin-bottom: 7vw;
+  line-height: 0px;
+  span {
+    -webkit-text-stroke-width: 0.5px;
+    -webkit-text-stroke-color: #000;
+    font-weight: 200;    
+    font-size: 80px;
+    text-shadow: 0 0px #00000000, 0 0px #00000000;
+    animation: jump 10s ease-in infinite;
+    display: inline-block;
+    color: rgb(255, 255, 255);
+
+    @for $i from 1 through 14 {
+      &:nth-child(#{$i}) {
+        animation-delay: 120ms * $i;
+      }
+    }
+  }
+}
+@keyframes jump {
+  33% {
+    text-shadow: 0 -80px rgb(238, 255, 0), 0 80px rgb(255, 0, 0);
+  }
+  50% {
+    transform: translate(0, 0);
+    text-shadow: 0 0px rgba(0, 0, 0, 0), 0 0px #00000000;
+  }
+  66.67% {
+    text-shadow: 0 -80px rgb(255, 0, 0), 0 80px rgb(229, 255, 0);
+  }
+  100% {
+    transform: translate(0, 0);
+    text-shadow: 0 0px rgba(0, 0, 0, 0), 0 0px #00000000;
+  }
+}

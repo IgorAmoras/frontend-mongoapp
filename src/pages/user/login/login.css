@@ -1,0 +1,148 @@
+@import url("https://fonts.googleapis.com/css2?family=Titan+One&display=swap");
+.login {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  position: absolute;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100vw;
+  background: linear-gradient(135deg, #000000, #2234ae);
+  height: 100vh;
+}
+
+.wrapper {
+  width: 100vw;
+  text-align: center;
+  margin-bottom: 7vw;
+  line-height: 0px;
+}
+
+.wrapper span {
+  -webkit-text-stroke-width: 0.5px;
+  -webkit-text-stroke-color: #000;
+  font-weight: 200;
+  font-size: 80px;
+  text-shadow: 0 0px #00000000, 0 0px #00000000;
+  -webkit-animation: jump 10s ease-in infinite;
+          animation: jump 10s ease-in infinite;
+  display: inline-block;
+  color: white;
+}
+
+.wrapper span:nth-child(1) {
+  -webkit-animation-delay: 120ms;
+          animation-delay: 120ms;
+}
+
+.wrapper span:nth-child(2) {
+  -webkit-animation-delay: 240ms;
+          animation-delay: 240ms;
+}
+
+.wrapper span:nth-child(3) {
+  -webkit-animation-delay: 360ms;
+          animation-delay: 360ms;
+}
+
+.wrapper span:nth-child(4) {
+  -webkit-animation-delay: 480ms;
+          animation-delay: 480ms;
+}
+
+.wrapper span:nth-child(5) {
+  -webkit-animation-delay: 600ms;
+          animation-delay: 600ms;
+}
+
+.wrapper span:nth-child(6) {
+  -webkit-animation-delay: 720ms;
+          animation-delay: 720ms;
+}
+
+.wrapper span:nth-child(7) {
+  -webkit-animation-delay: 840ms;
+          animation-delay: 840ms;
+}
+
+.wrapper span:nth-child(8) {
+  -webkit-animation-delay: 960ms;
+          animation-delay: 960ms;
+}
+
+.wrapper span:nth-child(9) {
+  -webkit-animation-delay: 1080ms;
+          animation-delay: 1080ms;
+}
+
+.wrapper span:nth-child(10) {
+  -webkit-animation-delay: 1200ms;
+          animation-delay: 1200ms;
+}
+
+.wrapper span:nth-child(11) {
+  -webkit-animation-delay: 1320ms;
+          animation-delay: 1320ms;
+}
+
+.wrapper span:nth-child(12) {
+  -webkit-animation-delay: 1440ms;
+          animation-delay: 1440ms;
+}
+
+.wrapper span:nth-child(13) {
+  -webkit-animation-delay: 1560ms;
+          animation-delay: 1560ms;
+}
+
+.wrapper span:nth-child(14) {
+  -webkit-animation-delay: 1680ms;
+          animation-delay: 1680ms;
+}
+
+@-webkit-keyframes jump {
+  33% {
+    text-shadow: 0 -80px #eeff00, 0 80px red;
+  }
+  50% {
+    -webkit-transform: translate(0, 0);
+            transform: translate(0, 0);
+    text-shadow: 0 0px rgba(0, 0, 0, 0), 0 0px #00000000;
+  }
+  66.67% {
+    text-shadow: 0 -80px red, 0 80px #e5ff00;
+  }
+  100% {
+    -webkit-transform: translate(0, 0);
+            transform: translate(0, 0);
+    text-shadow: 0 0px rgba(0, 0, 0, 0), 0 0px #00000000;
+  }
+}
+
+@keyframes jump {
+  33% {
+    text-shadow: 0 -80px #eeff00, 0 80px red;
+  }
+  50% {
+    -webkit-transform: translate(0, 0);
+            transform: translate(0, 0);
+    text-shadow: 0 0px rgba(0, 0, 0, 0), 0 0px #00000000;
+  }
+  66.67% {
+    text-shadow: 0 -80px red, 0 80px #e5ff00;
+  }
+  100% {
+    -webkit-transform: translate(0, 0);
+            transform: translate(0, 0);
+    text-shadow: 0 0px rgba(0, 0, 0, 0), 0 0px #00000000;
+  }
+}
+/*# sourceMappingURL=login.css.map */

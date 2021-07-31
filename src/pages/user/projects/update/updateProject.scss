@@ -1,0 +1,64 @@
+.update-main{
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  background: linear-gradient(135deg, #000000, #2234ae);
+  height: 100vh;
+  p{
+    color: white;
+  }
+  h1{
+    color: white;
+    font-weight: 100;
+  }
+  .sub-div{
+    display: flex;
+    flex-direction: row;
+  }
+  .tasks-readonly{
+    display: flex;
+    flex-direction: column;
+    .task-group{
+      display: flex;
+      flex-direction: row;
+    }
+    .task-content{
+      border: 1.5px rgb(0, 0, 0) solid;
+      background: linear-gradient(320deg, black,  rgb(155, 0, 0));
+      border-radius: 20px;
+      padding: 20px 20px 20px 20px;
+      margin: 10px
+    }
+    p{
+      margin: 0 0 0 0;
+      font-weight: 100;
+    }
+  }
+  .responsible{
+    display: flex;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    flex-direction: row;
+    background: linear-gradient(320deg, black,  rgb(155, 0, 0));
+    p{
+      font-weight: 100;
+      margin: 10px;
+    }
+    strong{
+      font-weight: 500;
+      margin: 10px;
+    }
+  }
+  .new-task-button{
+    border: yellow 1px solid;
+    margin: 10px 0 0 0;
+    display: flex;
+    align-items: center;
+    font-size: 10px;
+    width: 120px;
+    height: 30px;
+  }
+}

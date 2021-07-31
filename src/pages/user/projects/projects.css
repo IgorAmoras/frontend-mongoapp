@@ -1,0 +1,41 @@
+.main-div {
+  width: 100vw !important;
+  height: 100vh !important;
+  background: linear-gradient(-45deg, #000000, #000000, #2234ae);
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background-size: 300% 300%;
+  -webkit-animation: gradient 15s ease;
+          animation: gradient 15s ease;
+  overflow-y: auto;
+}
+
+.first-div {
+  padding: 100px 50px 0 50px;
+}
+
+@-webkit-keyframes gradient {
+  0% {
+    background-position: 0 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+/*# sourceMappingURL=projects.css.map */
