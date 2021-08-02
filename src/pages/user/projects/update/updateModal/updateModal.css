@@ -1,0 +1,11 @@
+hr {
+  height: 1px;
+  background-color: black;
+  border: none;
+}
+
+.tasks {
+  overflow-y: scroll;
+  height: 30vh;
+}
+/*# sourceMappingURL=updateModal.css.map */

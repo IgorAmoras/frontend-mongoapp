@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,MAAM,CAAA;EACJ,QAAQ,EAAE,OAAO;EACjB,GAAG,EAAE,CAAC;EACN,UAAU,EAAE,IAAI;CACjB",
+    "sources": [
+        "taskUpdate.scss"
+    ],
+    "names": [],
+    "file": "taskUpdate.css"
+}

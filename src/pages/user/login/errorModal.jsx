@@ -1,9 +1,7 @@
 import Button from "react-bootstrap/Button";
-import { useHistory } from 'react-router-dom'
 import Modal from "react-bootstrap/Modal"
 import "bootstrap/dist/css/bootstrap.min.css";
 function ErrorModal({show, handleClose}) {
-    const history = useHistory()
     return (
       <>  
         <Modal show={show} onHide={handleClose}  aria-labelledby="contained-modal-title-vcenter" centered>

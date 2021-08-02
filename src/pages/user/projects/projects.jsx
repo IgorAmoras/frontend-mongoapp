@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useCallback} from 'react'
 import {useHistory} from 'react-router-dom'
 import { getProjects, deleteProject} from '../../../utils/requestHandler'
 import Table from 'react-bootstrap/Table'
@@ -9,19 +9,26 @@ import './projects.css'
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function Projects(){
+  const [changed, hasChanged] = useState(false)
   const [projects, setProjects] = useState(false)
   const [user, setUser] = useState({})
   const history = useHistory()
 
-  useEffect(async () => {
+  const loadProjects = useCallback(async () => {
     const user = getUser()
     const project = await getProjects(user)
-    console.log(project)
     setUser(user)
     setProjects(project.data.projects)
-  }, [])
+  }, [changed])
 
-  const handleDelete = (projectId) => deleteProject(user, projectId)
+  useEffect(() => {
+    loadProjects()
+  }, [loadProjects])
+
+  const handleDelete = async (projectId) => {
+    await deleteProject(user, projectId)
+    hasChanged(!changed)
+  }
   const parseData = (data) => data.split('.', 5)[0].split('T').join(' às ')
 
   return(

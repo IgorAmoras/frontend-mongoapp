@@ -1,19 +1,33 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState, useRef } from "react";
 import { useLocation } from "react-router-dom";
-import { getResponsible, getAllUsers } from "../../../../utils/requestHandler";
+
 import Form from "react-bootstrap/Form";
 import Dropdown from "react-bootstrap/Dropdown";
-import "./updateProject.css";
 import Button from "react-bootstrap/esm/Button";
 
-function UpdateProject() {
+import { getResponsible, getAllUsers } from "../../../../utils/requestHandler";
+import TaskUpdate from "./updateToast/taskUpdate";
+import ModalUpdate from "./updateModal/updateModal";
+import "./updateProject.css";
+
+function UpdateProject(props) {
+  console.log(props.location)
   const { project } = useLocation().state;
   const [responsibles, setResponsibles] = useState([]);
   const [users, setUsers] = useState([]);
-  const userRef = useRef();
+  const [tasksArray, setTaskArray] = useState([]);
+  const [showToast, setShowToast] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+
+  const refUser = useRef();
+  const refTaskTitle = useRef();
+  const refTaskDescription = useRef();
+  const refProjectTitle = useRef()
+  const refProjectDescription = useRef()
+
   const { tasks } = project;
-  const tasksArray = [];
+  let current;
 
   useEffect(async () => {
     tasks.forEach(async (task) => {
@@ -28,6 +42,12 @@ function UpdateProject() {
     setResponsibles((states) => [...states, newResponsible]);
 
   const addUser = (user) => setUsers((prev) => [...prev, user]);
+
+  const addTask = (task) => setTaskArray((prev) => [...prev, task]);
+
+  const toggleShowToast = () => setShowToast(!showToast);
+
+  const toggleShowModal = () => setShowModal(!showModal);
 
   const showResponsible = (index) => {
     if (responsibles.length === 0) return <p>Não há responsáveis</p>;
@@ -58,29 +78,50 @@ function UpdateProject() {
   };
 
   const handleChoose = (user) => {
-    if (!userRef.current) return;
-    userRef.current.innerText = ` ${user.name}`;
+    if (!refUser.current) return;
+    refUser.current.innerText = ` ${user.name}`;
+    current = user._id;
   };
 
-  const handleNewTask = () => {
+  const handleNewTask = async () => {
+    const taskObj = {
+      title: refTaskTitle.current.value,
+      description: refTaskDescription.current.value,
+      responsible: current,
+      responsibleName: refUser.current.innerText
+    };
+    await addTask(taskObj);
+    refTaskTitle.current.value = "";
+    refTaskDescription.current.value = "";
+    refUser.current.innerText = "";
+    toggleShowToast();
+  };
 
-  }
+
   return (
     <div className="update-main">
       <h1>Seu projeto</h1>
+      <TaskUpdate show={showToast} toggleShow={toggleShowToast} />
+      <ModalUpdate
+        show={showModal}
+        handleClose={toggleShowModal}
+        tasks={tasksArray}
+        title={refProjectTitle.current}
+        description={refProjectDescription.current}
+      />
       <Form>
         <div className="sub-div">
           <div style={{ marginRight: "10px" }}>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Form.Label style={{ color: "white" }}> | Título |</Form.Label>
-              <Form.Control type="email" placeholder="Seu novo título" />
+              <Form.Control type="email" ref = {refProjectTitle}placeholder="Seu novo título" />
               <p>
                 O título atual é <strong>{project.title}</strong>
               </p>
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Form.Label style={{ color: "white" }}>Descrição</Form.Label>
-              <Form.Control type="email" placeholder="Sua nova descrição" />
+              <Form.Control type="email" ref={refProjectDescription} placeholder="Sua nova descrição" />
               <p>
                 O título atual é <strong>{project.description}</strong>
               </p>
@@ -138,18 +179,19 @@ function UpdateProject() {
                   controlId="exampleForm.ControlTextarea1"
                 >
                   <Form.Label style={{ color: "white" }}>Título </Form.Label>
-                  <Form.Control as="textarea" rows={1} />
+                  <Form.Control as="textarea" ref={refTaskTitle} rows={1} />
+                  
                 </Form.Group>
                 <Form.Group
                   className="mb-3"
                   controlId="exampleForm.ControlTextarea1"
                 >
                   <Form.Label style={{ color: "white" }}>Descrição </Form.Label>
-                  <Form.Control as="textarea" rows={2} />
+                  <Form.Control as="textarea" ref={refTaskDescription} rows={2} />
                 </Form.Group>
                 <div className="responsible">
                   <strong style={{ color: "white" }}>Responsável</strong>
-                  <p ref={userRef} style={{ marginLeft: "10px" }}></p>
+                  <p ref={refUser} style={{ marginLeft: "10px" }}></p>
                 </div>
                 <Dropdown>
                   <Dropdown.Toggle variant="dark">
@@ -160,7 +202,8 @@ function UpdateProject() {
                 <Button
                   variant="outline-warning"
                   className="new-task-button"
-                  onClick={() => {
+                  onClick={(e) => {
+                    e.preventDefault();
                     handleNewTask();
                   }}
                 >
@@ -169,6 +212,17 @@ function UpdateProject() {
               </div>
             </div>
           </div>
+        </div>
+        <div className="update-project-button">
+          <Button
+            variant="danger"
+            onClick={(e) => {
+              e.preventDefault();
+              toggleShowModal();
+            }}
+          >
+            Alterar projeto!
+          </Button>
         </div>
       </Form>
     </div>
