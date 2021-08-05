@@ -1,0 +1,77 @@
+.update-project-main {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100vw !important;
+  height: 100vh !important;
+  background: linear-gradient(-45deg, #000000, #2234ae);
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  overflow-y: auto;
+}
+
+.update-project-main * {
+  font-weight: 100;
+}
+
+.update-project-main h1 {
+  color: white;
+  font-weight: 100;
+}
+
+.update-form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.update-form > div {
+  padding: 0 10px 0 10px;
+}
+
+.update-form > div > div > h4 {
+  color: white;
+  font-weight: 100;
+}
+
+.responsible-task {
+  color: white;
+  background: linear-gradient(45deg, #000000, #af0404);
+  border-radius: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  padding-left: 15px;
+  padding-right: 15px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.submit-form {
+  width: 60vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.submit-form Button {
+  font-weight: 200;
+}
+/*# sourceMappingURL=createProject.css.map */

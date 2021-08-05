@@ -6,9 +6,9 @@ const createUser = async (user) => {
     try {
     console.log(user)
       const createdUser = await api.post("/auth/register", user);
-      return createdUser.data;    
+      return createdUser;    
     } catch (error) {
-        console.log(error)
+      throw error.response
     }
 };
 const loginUser = async (user) => {
@@ -20,7 +20,7 @@ const loginUser = async (user) => {
   }
 };
 const validateUser = async (user) => {
-  console.log(user.token, user.user.email);
+  console.log(user)
   try {
     const res = await api.get(`/auth/users/${user.user.email}`, {
       headers: { authorization: `Bearer ${user.token}` },
@@ -82,6 +82,16 @@ const updateProject = async (id, project, user) => {
   }
 };
 
+const createProject = async (project, user) => {
+  try {
+    const created = await api.post('/projects/create', project, { headers: { authorization: `Bearer ${user.token}` }})
+    return created.data
+  } catch (error) {
+    throw error
+  }
+
+}
+
 export {
   createUser,
   loginUser,
@@ -91,4 +101,5 @@ export {
   getResponsible,
   getAllUsers,
   updateProject,
+  createProject
 };

@@ -4,8 +4,8 @@ import Home from "./pages/home/home";
 import Login from "./pages/user/login/login"
 import Projects from "./pages/user/projects/projects";
 import UpdateProject from './pages/user/projects/update/updateProject'
+import CreateProject from "./pages/projects/createProject";
 import CreateUser from "./pages/user/create/createUser";
-import Counter from "./components/Counter";
 
 const Routes = () => {
   return (
@@ -15,7 +15,7 @@ const Routes = () => {
       <Route path="/update" exact component={UpdateProject} />
       <Route path="/home" component={Home} />
       <Route path="/createuser" component={CreateUser} />
-      <Route path="/counter" component = {Counter} />
+      <Route path="/createProject" component = {CreateProject} />
     </Router>
   );
 };

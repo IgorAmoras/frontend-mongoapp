@@ -38,8 +38,13 @@ function Projects(){
 
       <div className='main-div'>
         <div className='first-div'>
-
           {
+          projects.length === 0 ? (
+          <div className = 'no-project'>
+          <h1>Poxa, parece que você ainda não tem nenhum projeto em andamento!</h1>
+          <Button variant='warning' onClick={(e)=>{e.preventDefault(); history.push('/createproject')}}>Deseja criar novos?</Button>
+          </div>
+          ):(          
           projects.map(project =>
           <>
           <Table key={project.id} variant="dark" borderless>
@@ -67,6 +72,7 @@ function Projects(){
             <Button variant='danger' onClick ={(e) =>{e.preventDefault(); history.push('/update', {project}) }}>Modificar tarefa</Button>
           </div>
           </>
+          )
           )
           }
         </div>

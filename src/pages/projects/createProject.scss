@@ -1,0 +1,46 @@
+.update-project-main{
+  *{
+    font-weight: 100;
+  }
+  display: flex;
+  width: 100vw!important;
+  height: 100vh!important;
+  background: linear-gradient(-45deg, #000000, #2234ae);
+  justify-content: center;
+  overflow-y: auto;
+  h1{
+    color: white;
+    font-weight: 100;
+  }
+}
+.update-form{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.update-form > div {
+  padding: 0 10px 0 10px;
+}
+.update-form > div > div > h4{
+  color: white;
+  font-weight: 100;
+}
+.responsible-task{
+  color: white;
+  background: linear-gradient(45deg, #000000, rgb(175, 4, 4));
+  border-radius: 10px;
+  display: flex;
+  flex-direction: row;
+  padding-left: 15px;
+  padding-right: 15px;
+  align-items: center;
+  width: fit-content;
+}
+.submit-form{
+  width: 60vw;
+  display: flex;
+  justify-content: space-around;
+  Button{
+    font-weight: 200;
+  }
+}

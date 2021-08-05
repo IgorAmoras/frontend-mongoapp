@@ -38,7 +38,7 @@ function Home() {
   return ( 
     <div className="my-container">
       { user ? <h1 className = 'welcome-message'>Bem vindo, {user.name}!</h1> : 
-      <Button variant = 'info' style = {loginBtn}>Criar conta</Button> 
+      <Button variant = 'info' style = {loginBtn} onClick={()=>{history.push('/createuser')}}>Criar conta</Button> 
       }
       <div className="center-div">
         <h1 className="center-text">

@@ -32,14 +32,18 @@ function CreateUser() {
       setToastMessage("Password does not match");
       return true;
     }
-    if (
+    else if (
       refEmail.current.value !== refConfEmail.current.value ||
       refEmail.current.value === ""
     ) {
       setToastMessage("Email does not match");
-      return true;
+      return true
     }
-    return false;
+    else if(!refEmail.current.value.includes('@')) {
+      setToastMessage("Invalid email")
+      return true
+    }
+    else{ return false } ;
   };
 
   const handleCreate = async () => {
@@ -49,24 +53,31 @@ function CreateUser() {
       !refEmail.current ||
       !refPassword.current ||
       !refConfPassword.current
-    )
-      return;
-    if (validateData()) toggleShowToast();
+    ) return;
+    if (validateData()) {toggleShowToast(); return;}
     const user = {
       name: refName.current.value,
       email: refEmail.current.value,
       password: refPassword.current.value
     }
     try {
-      const newUser = await createUser(user)
-      setUser(newUser.user)
+      const {data}= await createUser(user)
+      setUser(parseUser(data))
       history.push('/home')
     } catch (error) {
-      console.error(error)
+      setToastMessage(`${error.data.error}, change email, or login into the system`)
+      toggleShowToast();      
     }
   };
 
   const toggleShowToast = () => setShowToast(!showToast);
+
+  const parseUser = (user) => {
+    let parsedUser = {}
+    parsedUser.user= user.user
+    parsedUser.token=user.token
+    return parsedUser
+  }
 
   return (
     <div className="update-user">
@@ -157,7 +168,8 @@ function CreateUser() {
           <Button
             variant="warning"
             type="button"
-            onClick={() => {
+            onClick={e => {
+              e.preventDefault();
               handleCreate();
             }}
           >
