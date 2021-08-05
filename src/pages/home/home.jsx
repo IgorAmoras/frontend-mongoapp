@@ -1,7 +1,9 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
-
+import { useSelector, useDispatch } from "react-redux";
+import { bindActionCreators } from "redux";
+import { actionCreator } from "../../state/index"
 import Button from "react-bootstrap/Button";
 import { validateUser } from "../../utils/requestHandler";
 import LoginModal from "./loginModal";
@@ -13,7 +15,10 @@ function Home() {
   const history = useHistory();
   const [show, setShow] = useState(false);
   const [user, setUser] = useState(false)
-  
+  const account = useSelector(state => state.account)
+  const dispatch = useDispatch();
+  const {depositMoney, withdrawMoney} = bindActionCreators(actionCreator, dispatch)
+
   const handleClose = () => setShow(false);
   const redirect = (location) => {
     history.push(location);
