@@ -6,6 +6,7 @@ import Projects from "./pages/user/projects/projects";
 import UpdateProject from './pages/user/projects/update/updateProject'
 import CreateProject from "./pages/projects/createProject";
 import CreateUser from "./pages/user/create/createUser";
+import UserData from './pages/user/data/userData'
 
 const Routes = () => {
   return (
@@ -15,7 +16,8 @@ const Routes = () => {
       <Route path="/update" exact component={UpdateProject} />
       <Route path="/home" component={Home} />
       <Route path="/createuser" component={CreateUser} />
-      <Route path="/createProject" component = {CreateProject} />
+      <Route path="/createproject" component = {CreateProject} />
+      <Route path="/userdata" component = {UserData} />
     </Router>
   );
 };

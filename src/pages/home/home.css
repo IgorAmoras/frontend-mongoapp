@@ -11498,6 +11498,10 @@ fieldset:disabled .btn {
   }
 }
 
+Button {
+  width: 15vw;
+}
+
 .my-container {
   position: absolute;
   display: -webkit-box;
@@ -11558,6 +11562,18 @@ fieldset:disabled .btn {
   border: 2px solid #fffAff;
   padding: 80px;
   border-radius: 20px;
+}
+
+.lower-row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.lower-row Button {
+  margin: 0 20px 0 20px;
 }
 
 @-webkit-keyframes gradient {

@@ -61,12 +61,12 @@ function CreateUser() {
       password: refPassword.current.value
     }
     try {
-      const {data}= await createUser(user)
-      setUser(parseUser(data))
+      const data= await createUser(user)
+      setUser(parseUser(data.data))
       history.push('/home')
     } catch (error) {
-      setToastMessage(`${error.data.error}, change email, or login into the system`)
-      toggleShowToast();      
+      console.log(error)
+      //setToastMessage(`${error.data.error}, change email, or login into the system`)
     }
   };
 

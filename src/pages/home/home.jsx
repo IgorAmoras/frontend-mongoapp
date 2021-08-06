@@ -33,13 +33,10 @@ function Home() {
   }, [])
 
   const btnStyle = {margin: "20px 20px 20px 20px"};
-  const loginBtn = {position: 'absolute',heigth: '10px', bottom: '10%', textTransform: 'uppercase'}
+  const loginBtn = {heigth: '10px', bottom: '10%', textTransform: 'uppercase'}
 
   return ( 
     <div className="my-container">
-      { user ? <h1 className = 'welcome-message'>Bem vindo, {user.name}!</h1> : 
-      <Button variant = 'info' style = {loginBtn} onClick={()=>{history.push('/createuser')}}>Criar conta</Button> 
-      }
       <div className="center-div">
         <h1 className="center-text">
           Project <br /> Manager
@@ -49,18 +46,29 @@ function Home() {
         </p>
         <LoginModal show= {show} handleClose= {handleClose} />
         <div classname="bootstrap-buttons">
+          <div>
           <Button variant="primary" style={btnStyle} onClick = {(e)=>{ if(!user){e.preventDefault(); setShow(true); return} redirect('/projects')}}>
-            MINHAS
+            MEUS PROJETOS
           </Button>
-          <Button variant="warning" style={btnStyle} onClick = {()=>{redirect('/createtasks')}}>
-            CRIAR
+          <Button variant="warning" style={btnStyle} onClick = {(e)=>{ if(!user){e.preventDefault(); setShow(true); return} redirect('/createproject')}}>
+            CRIAR NOVOS
           </Button>
-          <Button variant="danger" style={btnStyle} onClick = {()=>{redirect('/deletetasks')}}>
-            DELETAR
-          </Button>
-          <Button variant="dark" style={btnStyle} onClick = {()=>{redirect('/changetasks')}}>
-            MODIFICAR
-          </Button>
+          {user ? ( 
+            <>
+            <Button variant="dark" style={btnStyle} onClick = {(e)=>{ if(!user){e.preventDefault(); setShow(true); return} redirect('/userdata')}}>
+              MEUS DADOS
+            </Button>     
+            </>
+          ):null}
+          </div>
+          <div className='lower-row'>
+            {user ? <h1 className = 'welcome-message'>Bem vindo, {user.name}!</h1> : (
+              <div className = 'buttons-login'>
+              <Button variant = 'info' className = 'create-button' onClick={()=>{history.push('/createuser')}}>CRIAR CONTA</Button> 
+              <Button variant = 'light' className = 'create-button' onClick={()=>{history.push('/login')}}>FAZER LOGIN</Button> 
+              </div>
+            )}
+          </div>
         </div>
       </div>
     </div>

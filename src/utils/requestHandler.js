@@ -92,6 +92,15 @@ const createProject = async (project, user) => {
 
 }
 
+const deleteUser = async(user) => {
+  try {
+    const deleted = await api.delete(`/auth/users/${user._id}`)
+    return deleted
+  } catch (error) {
+    throw error
+  }
+}
+
 export {
   createUser,
   loginUser,
@@ -101,5 +110,6 @@ export {
   getResponsible,
   getAllUsers,
   updateProject,
-  createProject
+  createProject,
+  deleteUser
 };

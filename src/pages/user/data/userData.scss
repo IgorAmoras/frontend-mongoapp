@@ -1,0 +1,81 @@
+.user-data{
+  *{
+    text-transform: uppercase;
+    font-weight: 100;
+  }
+  @mixin onHover{ 
+    position: inherit;
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    border: 2px solid transparent;
+    &:hover{
+      border: 2px solid rgb(109, 1, 1);
+      background-color: rgba(109, 0, 0, 0.3);
+      border-radius: 10px;
+    }
+  }
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  width: 100vw!important;
+  height: 100vh!important;
+  background: linear-gradient(-45deg, #000000,#000000, #2234ae);
+  .user-center{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  input[type='text']{
+    color:white;
+    border:none;
+    outline: none;
+    background-color:transparent;
+    width: 7vw;
+    height: 4vh;
+    border-bottom: 1px solid;
+  }
+  .hidden-text{
+    color: rgba(255,255,255,0.5);
+    display: flex;
+    justify-content: center;
+    margin-bottom: -20px;
+  }
+  .inner-section{
+    display: flex;
+    flex-direction: row;
+    margin: 10px auto;
+    div{
+      width: auto;
+      margin: 20px;
+    }
+    h4{ 
+      color: white
+    }
+    .Badge{
+      margin-right: 20px;
+    }
+  
+  }
+  .upper-left{ 
+    @include onHover();
+  }
+  .upper-rigth{ 
+    @include onHover();
+  }
+  .lower-left{ 
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    @include onHover();
+  }
+  .lower-rigth{ 
+    @include onHover();
+  }
+  .button-out{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+

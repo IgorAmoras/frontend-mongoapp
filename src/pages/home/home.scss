@@ -1,5 +1,7 @@
 @import "../../../node_modules/bootstrap/scss/bootstrap";
-
+Button{ 
+    width: 15vw;
+}
 @mixin base{ 
     position: absolute;
     display: flex;
@@ -44,7 +46,13 @@
     padding: 80px;
     border-radius: 20px;
 }
-
+.lower-row{
+    display: flex;
+    justify-content: space-around;
+    Button{
+        margin: 0 20px 0 20px;
+    }
+}
 @keyframes gradient { 
     0%{
         background-position: 0 50%;
