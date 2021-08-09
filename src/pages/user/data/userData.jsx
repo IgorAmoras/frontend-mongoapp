@@ -1,17 +1,16 @@
 import React, { useState, useEffect, useRef } from "react";
 import Badge from "react-bootstrap/Badge";
-import getUser from "../../../utils/getCurrentUser";
-import _ from "lodash";
+import getUser, { setUser } from "../../../utils/getCurrentUser";
 import { deleteProject, getProjects } from "../../../utils/requestHandler";
 import "./userData.css";
 import Toast from "./toastMessage";
-import { deleteUser } from "../../../utils/requestHandler";
+import { deleteUser, updateUser } from "../../../utils/requestHandler";
 import { useHistory } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 let aux = 0;
 
 export default function UserData() {
-  const [user, setUser] = useState({
+  const [user, setDefaultUser] = useState({
     name: "",
     permissions: "",
     email: "",
@@ -33,10 +32,17 @@ export default function UserData() {
 
   useEffect(async () => {
     const sysUser = getUser();
-    setUser(sysUser.user);
+    console.log(sysUser);
+    setDefaultUser(sysUser.user);
     setDefaultData(sysUser.user);
-    const { data } = await getProjects(sysUser);
-    setProjects(data.projects);
+    try {
+      const { data } = await getProjects(sysUser);
+      console.log(data);
+      setProjects(data.projects);
+      debugger;
+    } catch (err) {
+      console.log(err);
+    }
   }, []);
 
   const parsePermission = (pTypes) => {
@@ -59,6 +65,25 @@ export default function UserData() {
   };
 
   const toggleShow = () => setShowToast(!showToast);
+
+  const handleUpdate = async () => {
+    console.log({ user, token: user.token });
+    if (user === defaultData) {
+      setToastMessage("Você não alterou seu usuário!");
+      toggleShow();
+      return;
+    }
+    try {
+      await updateUser(user);
+      setUser({ user, token: user.token });
+      setToastMessage("Usuário alterado com sucesso!");
+      toggleShow();
+    } catch (err) {
+      setToastMessage("Houve um erro... :(");
+      console.error(err);
+      toggleShow();
+    }
+  };
 
   return (
     <div className="user-data" onClick={unclick}>
@@ -93,8 +118,12 @@ export default function UserData() {
                     onKeyPress={(e) => {
                       if (e.key === "Enter") unclick();
                     }}
+                    value={`${user.name}`}
                     onChange={(e) => {
-                      setUser((prev) => ({ ...prev, name: e.target.value }));
+                      setDefaultUser((prev) => ({
+                        ...prev,
+                        name: e.target.value,
+                      }));
                     }}
                     type="text"
                   />
@@ -173,7 +202,7 @@ export default function UserData() {
                       if (e.key === "Enter") {
                         if (!user.email.includes("@")) {
                           setToastMessage("Seu email está inválido!");
-                          setUser((prev) => ({
+                          setDefaultUser((prev) => ({
                             ...prev,
                             email: defaultData.email,
                           }));
@@ -184,7 +213,10 @@ export default function UserData() {
                       }
                     }}
                     onChange={(e) => {
-                      setUser((prev) => ({ ...prev, email: e.target.value }));
+                      setDefaultUser((prev) => ({
+                        ...prev,
+                        email: e.target.value,
+                      }));
                     }}
                     type="text"
                   />
@@ -204,7 +236,26 @@ export default function UserData() {
           >
             Voltar
           </Button>
-          <Button variant="outline-warning" onClick={() => {}}>
+          <Button
+            variant="outline-light"
+            onClick={() => {
+              window.localStorage.removeItem("user");
+              setToastMessage("Tchau tchau...");
+              toggleShow();
+              setTimeout(() => {
+                history.push("/home");
+              }, 2000);
+            }}
+          >
+            Deslogar
+          </Button>
+          <Button
+            variant="outline-warning"
+            onClick={(e) => {
+              e.preventDefault();
+              handleUpdate();
+            }}
+          >
             Alterar usuário
           </Button>
           <Button

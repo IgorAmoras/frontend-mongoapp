@@ -19,6 +19,10 @@ function Home() {
   const dispatch = useDispatch();
   const {depositMoney, withdrawMoney} = bindActionCreators(actionCreator, dispatch)
 
+  const handleRedux = () => {
+    dispatch(depositMoney(2000));
+  }
+
   const handleClose = () => setShow(false);
   const redirect = (location) => {
     history.push(location);
@@ -62,10 +66,17 @@ function Home() {
           ):null}
           </div>
           <div className='lower-row'>
-            {user ? <h1 className = 'welcome-message'>Bem vindo, {user.name}!</h1> : (
+            {user ?
+            (<>
+              <h1 className = 'welcome-message'>Bem vindo, {user.name}!</h1> 
+              <Button variant = 'light' className = 'create-button' onClick={handleRedux}>Redux</Button> 
+              <h1>{account}</h1>
+            </>): (
               <div className = 'buttons-login'>
               <Button variant = 'info' className = 'create-button' onClick={()=>{history.push('/createuser')}}>CRIAR CONTA</Button> 
               <Button variant = 'light' className = 'create-button' onClick={()=>{history.push('/login')}}>FAZER LOGIN</Button> 
+              <Button variant = 'light' className = 'create-button' onClick={()=>{}}>Redux</Button> 
+
               </div>
             )}
           </div>

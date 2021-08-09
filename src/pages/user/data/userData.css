@@ -34,7 +34,7 @@
   border: none;
   outline: none;
   background-color: transparent;
-  width: 7vw;
+  width: auto;
   height: 4vh;
   border-bottom: 1px solid;
 }

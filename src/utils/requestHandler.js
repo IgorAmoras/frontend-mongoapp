@@ -39,7 +39,7 @@ const getProjects = async (user) => {
     });
     return projects;
   } catch (error) {
-    console.error(error);
+    throw error
   }
 };
 
@@ -101,6 +101,16 @@ const deleteUser = async(user) => {
   }
 }
 
+const updateUser = async(user) => {
+  try{
+    const updated = await api.put(`/auth/users/${user._id}`, user)
+    return updated
+  }catch(err){
+    throw err
+  }
+
+}
+
 export {
   createUser,
   loginUser,
@@ -111,5 +121,6 @@ export {
   getAllUsers,
   updateProject,
   createProject,
-  deleteUser
+  deleteUser,
+  updateUser
 };

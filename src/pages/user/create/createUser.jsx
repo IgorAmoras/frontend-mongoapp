@@ -23,7 +23,8 @@ function CreateUser() {
     { name: "Membro", value: "1" },
     { name: "Administrador", value: "2" },
   ];
-
+  
+  const toggleShowToast = () => setShowToast(!showToast);
   const validateData = () => {
     if (
       refPassword.current.value !== refConfPassword.current.value ||
@@ -65,12 +66,13 @@ function CreateUser() {
       setUser(parseUser(data.data))
       history.push('/home')
     } catch (error) {
+      setToastMessage(error)
+      toggleShowToast()
       console.log(error)
       //setToastMessage(`${error.data.error}, change email, or login into the system`)
     }
   };
 
-  const toggleShowToast = () => setShowToast(!showToast);
 
   const parseUser = (user) => {
     let parsedUser = {}
