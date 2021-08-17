@@ -1,6 +1,6 @@
 import React from 'react'
 import Toast from 'react-bootstrap/Toast'
-import './taskUpdate.css'
+import './taskUpdate.scss'
 function taskUpdate({show, toggleShow}) {
   return (
     <Toast className='toast' show={show} onClose={toggleShow}>

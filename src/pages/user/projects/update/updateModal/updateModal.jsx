@@ -5,7 +5,7 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { updateProject } from "../../../../../utils/requestHandler";
 import getUser from "../../../../../utils/getCurrentUser";
-import "./updateModal.css";
+import "./updateModal.scss";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function UpdateModal({ show, handleClose, tasks, title, description }) {

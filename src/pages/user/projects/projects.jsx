@@ -5,7 +5,7 @@ import { getProjects, deleteProject} from '../../../utils/requestHandler'
 import Table from 'react-bootstrap/Table'
 import Button from 'react-bootstrap/Button'
 import getUser from '../../../utils/getCurrentUser'
-import './projects.css'
+import './projects.scss'
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function Projects(){

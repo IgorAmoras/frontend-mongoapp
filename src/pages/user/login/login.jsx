@@ -4,7 +4,7 @@ import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import { loginUser } from "../../../utils/requestHandler";
 import ErrorModal from './errorModal';
-import './login.css'
+import './login.scss'
 function Login() {
     const emailRef = useRef()
     const passwordRef = useRef()

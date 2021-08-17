@@ -9,7 +9,7 @@ import Button from "react-bootstrap/esm/Button";
 import { getResponsible, getAllUsers } from "../../../../utils/requestHandler";
 import TaskUpdate from "./updateToast/taskUpdate";
 import ModalUpdate from "./updateModal/updateModal";
-import "./updateProject.css";
+import "./updateProject.scss";
 
 function UpdateProject(props) {
   console.log(props.location)

@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import Badge from "react-bootstrap/Badge";
 import getUser, { setUser } from "../../../utils/getCurrentUser";
 import { deleteProject, getProjects } from "../../../utils/requestHandler";
-import "./userData.css";
+import "./userData.scss";
 import Toast from "./toastMessage";
 import { deleteUser, updateUser } from "../../../utils/requestHandler";
 import { useHistory } from "react-router-dom";

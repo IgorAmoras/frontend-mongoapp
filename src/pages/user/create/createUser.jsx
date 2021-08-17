@@ -7,7 +7,7 @@ import ButtonGroup from "react-bootstrap/ButtonGroup";
 import ErrorToast from "./errorToast/errorToast";
 import { createUser } from "../../../utils/requestHandler";
 import { setUser } from "../../../utils/getCurrentUser";
-import "./createUser.css";
+import "./createUser.scss";
 
 function CreateUser() {
   const [radioValue, setRadioValue] = useState("1");

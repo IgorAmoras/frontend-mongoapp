@@ -7,7 +7,7 @@ import { actionCreator } from "../../state/index"
 import Button from "react-bootstrap/Button";
 import { validateUser } from "../../utils/requestHandler";
 import LoginModal from "./loginModal";
-import "./home.css";
+import "./home.scss";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 

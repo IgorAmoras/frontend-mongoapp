@@ -4,7 +4,7 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Dropdown from "react-bootstrap/Dropdown";
 import DropdownButton from "react-bootstrap/DropdownButton";
-import "./createProject.css";
+import "./createProject.scss";
 import { getAllUsers } from "../../utils/requestHandler";
 import TaskUpdate from "./taskUpdate/taskUpdate";
 import TaskModal from './taskModal/taskModal'
